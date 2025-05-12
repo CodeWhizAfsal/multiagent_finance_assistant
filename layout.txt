@@ -1,0 +1,19 @@
+multiagent_finance_assistant/
+│
+├── app/                    ← Main Python app
+│   ├── agents/
+│   │   ├── api_agent.py
+│   │   ├── scraping_agent.py
+│   │   ├── retriever_agent.py
+│   │   ├── analysis_agent.py
+│   │   ├── language_agent.py
+│   │   └── voice_agent.py
+│   ├── orchestrator.py     ← Orchestration logic
+│   ├── main.py             ← FastAPI entrypoint
+│   └── streamlit_app.py    ← Streamlit UI
+│
+├── Dockerfile
+├── requirements.txt
+├── README.md
+└── docs/
+    └── ai_tool_usage.md

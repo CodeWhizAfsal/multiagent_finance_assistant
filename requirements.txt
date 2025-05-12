@@ -1,0 +1,7 @@
+streamlit
+fastapi
+uvicorn
+yfinance
+newspaper3k
+beautifulsoup4
+requests
