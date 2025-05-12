@@ -1,19 +1,29 @@
-multiagent_finance_assistant/
+finance-assistant/
 │
-├── app/                    ← Main Python app
+├── app/
+│   ├── orchestrator.py          # FastAPI router coordinating all agents
 │   ├── agents/
 │   │   ├── api_agent.py
-│   │   ├── scraping_agent.py
+│   │   ├── scraper_agent.py
 │   │   ├── retriever_agent.py
 │   │   ├── analysis_agent.py
-│   │   ├── language_agent.py
-│   │   └── voice_agent.py
-│   ├── orchestrator.py     ← Orchestration logic
-│   ├── main.py             ← FastAPI entrypoint
-│   └── streamlit_app.py    ← Streamlit UI
+│   │   └── language_agent.py
+│
+├── voice/
+│   ├── whisper_stt.py
+│   ├── tts_generator.py
+│
+├── streamlit_app/
+│   └── streamlit_app.py         # Streamlit frontend interface
+│
+├── data_ingestion/
+│   └── document_loader.py       # Loads filings for indexing
+│
+├── faiss_index/
+│   └── indexer.py
 │
 ├── Dockerfile
 ├── requirements.txt
-├── README.md
-└── docs/
-    └── ai_tool_usage.md
+├── Procfile
+├── runtime.txt
+└── README.md
