@@ -36,3 +36,14 @@ class BriefInput(BaseModel):
 def generate_brief(data: BriefInput):
     result = generate_market_brief(data.exposure, data.earnings, data.retrieved_info)
     return {"brief": result}
+from app.agents.voice_agent import speech_to_text, text_to_speech
+
+@app.post("/api/speech-to-text")
+def stt(audio_file: str):
+    text = speech_to_text(audio_file)
+    return {"transcription": text}
+
+@app.post("/api/text-to-speech")
+def tts(text: str):
+    text_to_speech(text)
+    return {"status": "success"}

@@ -51,3 +51,27 @@ if st.button("🧠 Generate Briefing"):
         st.write(response.json()["brief"])
     else:
         st.error("Failed to generate market brief.")
+import wave
+
+# Upload audio file for speech-to-text (STT)
+audio_file = st.file_uploader("Upload your voice input", type=["mp3", "wav"])
+if audio_file and st.button("Convert Speech to Text"):
+    with open("input_audio.wav", "wb") as f:
+        f.write(audio_file.getbuffer())
+    
+    response = requests.post("http://localhost:8000/api/speech-to-text", json={"audio_file": "input_audio.wav"})
+    if response.status_code == 200:
+        st.write("Text: ", response.json()["transcription"])
+    else:
+        st.error("Failed to transcribe speech.")
+
+# Generate text-to-speech (TTS) output from market brief
+if st.button("Listen to Market Brief"):
+    response = requests.get("http://localhost:8000/api/brief")
+    if response.status_code == 200:
+        market_brief = response.json()["brief"]
+        response = requests.post("http://localhost:8000/api/text-to-speech", json={"text": market_brief})
+        if response.status_code == 200:
+            st.success("Listening to market brief...")
+        else:
+            st.error("Failed to speak text.")

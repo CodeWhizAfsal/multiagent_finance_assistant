@@ -5,3 +5,8 @@ yfinance
 newspaper3k
 beautifulsoup4
 requests
+faiss-cpu
+sentence-transformers
+openai
+whisper
+pyttsx3
